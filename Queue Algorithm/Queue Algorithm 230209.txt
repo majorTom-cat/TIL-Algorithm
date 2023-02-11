@@ -63,3 +63,11 @@
 class NewNode 에서 NewNode rlink 필드롤 추가후 메소드들을 다듬어서 구현
 
 관련 파일 : EX8_DoubleLinkedQueue.java
+
+-----------------------------------------------------------------------------
+###이중 연결 큐 - 덱
+
+Double End Queue(Deque)
+덱을 구현하기 위해선 이중연결리스트를 쓸수밖에 없음
+
+관련 파일 : EX8_DoubleLinkedQueue_Deque.java
