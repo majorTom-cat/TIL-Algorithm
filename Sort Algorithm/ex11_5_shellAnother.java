@@ -3,12 +3,12 @@ package Algo;
 class Sort5 {
 
 	void intervalSort(int arr[], int i, int size, int interval) {
-		int temp, h, j, k, p;
+		int temp, h, j, p;
 		h = i % interval;
 		boolean move;
 		for (p = h; p < size; p+=interval) {
 			// while (interval <= j && j < size)
-			if (p + interval >= size) 
+			if (p + interval >= size) // array의 size를 넘어가는 경우
 				break;
 			
 			temp = arr[p + interval];
@@ -17,51 +17,35 @@ class Sort5 {
 				move = true;
 			else
 				move = false;
-			while (move) {
+			while (move) { // 데이터 이동
 				arr[j] = arr[j - interval];
 				j = j - interval;
 
-				if (j - interval <= 0)
+				if (j - interval <= 0) // array의 범위를 벗어날 경우
 					break;
-				
 				if (j > 0 && arr[j - interval] > temp)
 					move = true;
 				else
 					move = false;
 			}
-			
 			arr[j] = temp;
-	
-		}
-		System.out.printf("단계 %d : ", i);
-		for (k = 0; k < size; k++) // 단계별 수행 결과 출력
-			System.out.printf("%d  ", arr[k]);
-//		System.out.printf(", 바꾼 데이터 : %d", 0);
-		System.out.println();
+		} // for 문의 끝
 	}
 
 	void shellSort(int arr[], int size) {
 		int interval = size;
-
+		int k, t = 0; // 단계 출력을 위해
+		
 		while (interval >= 1) {
 			interval = interval / 2;
 			for (int i = 0; i < interval; i++)
 				intervalSort(arr, i, size, interval);
 
-			//			int temp, i, j, k;
-			//			for (i = 1; i < size; i++) {
-			//				temp = arr[i];
-			//				for (j = i; j > 0 && (arr[j - 1] > temp); j--) { // 기존 배열의 내용을 계속 탐색중일때
-			//					arr[j] = arr[j - 1];
-			//				}
-			//				arr[j] = temp; // j가 0이거나 a[j-1] <= temp(temp가 저장될 위치 확정) 일때 실행 
-			//
-			//				System.out.printf("단계 %d : ", i);
-			//				for (k = 0; k < size; k++) // 단계별 수행 결과 출력
-			//					System.out.printf("%d  ", arr[k]);
-			//				System.out.printf(", 바꾼 데이터 : %d", temp);
-			//				System.out.println();
-			//			}
+			System.out.printf("셸 정렬 %d 단계 (interval = %d) : ", ++t, interval);
+			for (k = 0; k < size; k++) // 단계별 수행 결과 출력
+				System.out.printf("%d  ", arr[k]);
+			System.out.println();
+
 		}
 	}
 }
