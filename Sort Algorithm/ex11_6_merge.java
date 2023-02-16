@@ -54,6 +54,10 @@ class Sort6 {
 	private int sorted[] = new int[8];
 
 	void merge(int arr[], int begin, int middle, int end) {
+
+    System.out.println();
+		System.out.print("(" + begin + ", " + middle + ", " + end + ")"); // 230216 추가
+
 		int size = arr.length;
 		int i, j, k, t;
 		i = begin;
@@ -62,11 +66,11 @@ class Sort6 {
 		while (i <= middle && j <=end) { // 양쪽의 데이터 어느쪽을 처리할지
 			if (arr[i]<= arr[j]) // i 는 왼쪽 j 는 오른쪽
 				sorted[k]= arr[i++]; // 왼쪽
-			else 
+			else
 				sorted[k]= arr[j++]; // 오른쪽
 			k++;
 		}
-		
+
 		// 남아있는 데이터를 어떻게 처리할때
 		if(i>middle) { // 왼쪽이 먼저 머지가 끝났을때
 			for(t=j; t<=end; t++, k++)
@@ -74,10 +78,10 @@ class Sort6 {
 		}
 		else { // 오른쪽이 먼저 머지가 끝났을때
 			for(t=i; t<=middle; t++, k++)
-				sorted[k] = arr[t]; 
+				sorted[k] = arr[t];
 		}
 		for (t=begin; t<=end;t++) // 단계별 정렬 결과 저장
-			arr[t]= sorted[t]; 
+			arr[t]= sorted[t];
 		System.out.printf("\n 병합 정렬 >> ");
 		for(t=0; t<size; t++)
 			System.out.printf("%3d ", arr[t]);
